@@ -2,6 +2,7 @@
 
 import { BLOG_TABLE_ID, GET_NOTION_TABLE, getNotionTable } from "@/api/useGetNotionTable";
 import NotionPosts from "@/components/blog/NotionPosts";
+import CareerList from "@/components/career/CareerList";
 import ContentsLayout from "@/layouts/ContentsLayout";
 import { useQuery } from "@tanstack/react-query";
 
@@ -13,8 +14,7 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-8">
       <ContentsLayout title="Career">
-        {/* <CareerList /> */}
-        <div />
+        <CareerList />
       </ContentsLayout>
       <ContentsLayout title="Blog">
         <NotionPosts blogPosts={blogPosts} />
