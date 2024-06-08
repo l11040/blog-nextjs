@@ -2,32 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  @apply antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-950 min-h-screen;
+  margin: none;
+  overflow-x: clip;
+  max-width: 100%;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: none;
+  overflow-x: clip;
+  max-width: 100%;
+  height: 100%;
+  overflow-y: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.react-activity-calendar__scroll-container {
+  max-width: 300px;
+}
+
+* {
+
+  /* 스크롤바의 스타일을 정의합니다. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    /* 스크롤바의 너비 */
+    height: 10px;
+    /* 스크롤바의 높이 */
+  }
+
+  /* 스크롤바의 썸을 정의합니다. */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175);
+    /* 스크롤바 색상 */
+    border-radius: 999px;
+    /* 둥글게 만듭니다. */
+  }
+
+  /* 스크롤바 트랙(경로)을 정의합니다. */
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* 스크롤바 트랙의 색상 */
   }
 }
