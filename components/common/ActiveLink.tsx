@@ -2,7 +2,7 @@
 
 import Link, { LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 interface ActiveLinkProps extends LinkProps {
   className?: string;
@@ -12,9 +12,29 @@ interface ActiveLinkProps extends LinkProps {
 
 const ActiveLink: React.FC<ActiveLinkProps> = ({ href, className, activeClassName, children, ...props }) => {
   const pathname = usePathname();
-  const isActive = pathname === href || pathname.startsWith(href as string);
 
-  const combinedClassName = isActive ? `${className} ${activeClassName}`.trim() : className || '';
+  // Memoize normalization to avoid recalculating on every render
+  const normalizedHref = useMemo(() => {
+    const normalize = (path: string) => {
+      if (path === '/') return path;
+      return path.endsWith('/') ? path.slice(0, -1) : path;
+    };
+    return normalize(href as string);
+  }, [href]);
+
+  const normalizedPathname = useMemo(() => {
+    const normalize = (path: string) => {
+      if (path === '/') return path;
+      return path.endsWith('/') ? path.slice(0, -1) : path;
+    };
+    return normalize(pathname);
+  }, [pathname]);
+
+  const isActive = normalizedPathname === normalizedHref ||
+    normalizedPathname.startsWith(`${normalizedHref}/`) ||
+    (normalizedHref !== '/' && normalizedPathname.includes(normalizedHref));
+
+  const combinedClassName = isActive ? `${className ?? ''} ${activeClassName}`.trim() : className;
 
   return (
     <Link href={href} {...props} className={combinedClassName}>
