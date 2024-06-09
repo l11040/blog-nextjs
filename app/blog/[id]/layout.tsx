@@ -7,8 +7,7 @@ type Props = {
   params: { id: string }
 }
 
-interface LayoutProps extends React.PropsWithChildren, Props {
-}
+interface LayoutProps extends React.PropsWithChildren, Props { }
 
 export async function generateMetadata(
   { params }: Props,
@@ -19,9 +18,8 @@ export async function generateMetadata(
     queryFn: () => getNotionPage(params.id),
   });
   const value = blockMap[params.id].value["properties"];
-
   return {
-    title: value.title[0],
+    title: String(value.title[0]),
     description: value.JIFT[0],
     keywords: value["THK:"][0][0].split(","),
   }

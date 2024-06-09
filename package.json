@@ -1,12 +1,14 @@
 {
-  "name": "blog-nextjs",
+  "name": "l11040.github.io",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://l11040.github.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.40.1",
@@ -16,7 +18,6 @@
     "react": "^18",
     "react-dom": "^18",
     "react-github-calendar": "^4.1.5",
-    "react-helmet": "^6.1.0",
     "react-notion": "^0.10.0",
     "react-notion-x": "^6.16.0"
   },

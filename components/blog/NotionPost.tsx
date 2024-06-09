@@ -6,7 +6,6 @@ import "react-notion-x/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
 import "@/styles/notion-page.css";
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 import useImageZoom from "@/hooks/useImageZoom";
 import { NotionTableType } from "@/types/notion";
 import Card from "../common/Card";
@@ -38,9 +37,6 @@ export default function NotionPost({ pageId, blockMap }: NotionPostProps) {
 
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
       <div
         data-dialog-target="image-dialog"
         className="flex flex-col gap-2"
